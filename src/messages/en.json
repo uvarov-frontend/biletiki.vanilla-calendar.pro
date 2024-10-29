@@ -3,13 +3,13 @@
     "logo": "biletiki"
   },
   "Footer" : {
-    "copyright": "Copyright © 2023 MIT License. |",
+    "copyright": "Copyright © 2024 MIT License. |",
     "source": "The source code of this website is publicly available and distributed for free on <link>GitHub</link>.",
     "developer": "Design and development by <link>Yury Uvarov</link>."
   },
   "Github": {
     "title": "GitHub",
-    "url": "https://github.com/uvarov-frontend/biletiki.store"
+    "url": "https://github.com/uvarov-frontend/biletiki.vanilla-calendar.pro"
   },
   "HomePage": {
     "head": {

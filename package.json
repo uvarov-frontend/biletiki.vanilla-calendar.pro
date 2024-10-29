@@ -1,10 +1,10 @@
 {
-  "name": "biletiki.store",
+  "name": "biletiki.vanilla-calendar.pro",
   "version": "0.1.0",
-  "homepage": "https://biletiki.store/",
+  "homepage": "https://biletiki.vanilla-calendar.pro/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uvarov-frontend/biletiki.store.git"
+    "url": "https://github.com/uvarov-frontend/biletiki.vanilla-calendar.pro.git"
   },
   "author": {
     "name": "Yury Uvarov",
