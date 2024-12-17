@@ -10,14 +10,7 @@ export default function Input({ placeholder }: { placeholder: string }) {
   return (
     <label className="relative h-full [&_input]:first:rounded-l-[10px]">
       <span
-        className={`will-change-[transform,opacity]
-				${
-          visibility
-            ? 'translate-y-0 opacity-100 transition-[transform_0.3s_cubic-bezier(0,0.6,0,1),opacity_0.3s_linear]'
-            : 'translate-y-3 opacity-0 transition-[transform_0.3s_cubic-bezier(1,0,1,0.4),opacity_0.3s_linear]'
-        }
-			absolute -top-5 left-4 h-5 text-[0.5625rem] font-semibold uppercase text-white`}
-      >
+        className={`will-change-[transform,opacity] absolute -top-5 left-4 h-5 text-[0.5625rem] font-semibold uppercase text-white ${visibility ? 'translate-y-0 opacity-100 transition-[transform_0.3s_cubic-bezier(0,0.6,0,1),opacity_0.3s_linear]' : 'translate-y-3 opacity-0 transition-[transform_0.3s_cubic-bezier(1,0,1,0.4),opacity_0.3s_linear]'}`}>
         {placeholder}
       </span>
       <input

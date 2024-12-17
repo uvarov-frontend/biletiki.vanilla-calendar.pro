@@ -1,30 +1,20 @@
 /* eslint-disable sort-keys */
-import { Options, FormatDateString } from 'vanilla-calendar-pro';
+import { type Options, FormatDateString } from 'vanilla-calendar-pro';
 
 const getOptions = (locale: string, date: FormatDateString, template: string): Options => ({
-  input: true,
+  inputMode: true,
   type: 'multiple',
-  date: {
-    max: date,
-  },
-  settings: {
-    lang: locale,
-    range: {
-      disablePast: true,
-    },
-    selection: {
-      day: 'multiple-ranged',
-      year: 'only-arrows',
-      month: 'only-arrows',
-      cancelableDay: false,
-    },
-    visibility: {
-      theme: 'light',
-      daysOutside: false,
-      positionToInput: 'center',
-    },
-  },
-  DOMTemplates: {
+  dateMax: date,
+  locale,
+  disableDatesPast: true,
+  selectionDatesMode: 'multiple-ranged',
+  selectionYearsMode: 'only-arrows',
+  selectionMonthsMode: 'only-arrows',
+  enableDateToggle: false,
+  selectedTheme: 'light',
+  displayDatesOutside: false,
+  positionToInput: 'center',
+  layouts: {
     multiple: template,
   },
 });

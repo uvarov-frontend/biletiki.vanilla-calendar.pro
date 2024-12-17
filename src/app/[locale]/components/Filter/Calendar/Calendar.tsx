@@ -1,12 +1,12 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable sort-keys */
 
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import VanillaCalendar from 'vanilla-calendar-pro';
-import { getDateString } from 'vanilla-calendar-pro/utilities';
-import 'vanilla-calendar-pro/build/vanilla-calendar.layout.min.css';
-import './Calendar.css';
+import { Calendar as VC } from 'vanilla-calendar-pro';
+import { getDateString } from 'vanilla-calendar-pro/utils';
 
 import { ITitles, Locale } from '@/types';
 
@@ -15,6 +15,9 @@ import clearInput from './helpers/clearInput';
 import formatInputDate from './helpers/formatInputDate';
 import getOptions from './helpers/getOptions';
 import getTemplate from './helpers/getTemplate';
+
+import 'vanilla-calendar-pro/styles/layout.css';
+import './Calendar.css';
 
 export default function Calendar({
   locale,
@@ -29,68 +32,68 @@ export default function Calendar({
 }) {
   const [visibilityStart, setVisibilityStart] = useState(false);
   const [visibilityEnd, setVisibilityEnd] = useState(false);
-  const [calendar, setCalendar] = useState<VanillaCalendar | null>(null);
+  const [calendar, setCalendar] = useState<VC | null>(null);
   const [inputStartEl, setInputStartEl] = useState<HTMLInputElement | null>(null);
   const [inputEndEl, setInputEndEl] = useState<HTMLInputElement | null>(null);
   const calendarEl = useRef<HTMLDivElement | null>(null);
   const dateMinStr = getDateString(new Date());
 
-  const clickDay = (_: MouseEvent, self: VanillaCalendar) => {
+  const onClickDate = (self: VC) => {
     if (!inputStartEl || !inputEndEl) return;
 
-    inputStartEl.value = formatInputDate(self.selectedDates[0], locale);
-    inputEndEl.value = self.selectedDates.length > 1 ? formatInputDate(self.selectedDates[self.selectedDates.length - 1], locale) : '';
+    inputStartEl.value = formatInputDate(self.context.selectedDates[0], locale);
+    inputEndEl.value = self.context.selectedDates.length > 1 ? formatInputDate(self.context.selectedDates[self.context.selectedDates.length - 1], locale) : '';
 
     setVisibilityStart(inputStartEl.value.length > 0);
     setVisibilityEnd(inputEndEl.value.length > 0);
 
-    self.settings.range.min = self.selectedDates.length === 1 ? self.selectedDates[0] : dateMinStr;
-    self.DOMTemplates.multiple = getTemplate(self.selectedDates.length === 1, self.selectedDates.length >= 1, titles);
-    self.update();
+    self.set({
+      displayDateMin: self.context.selectedDates.length === 1 ? self.context.selectedDates[0] : dateMinStr,
+      layouts: {
+        multiple: getTemplate(self.context.selectedDates.length === 1, self.context.selectedDates.length >= 1, titles),
+      },
+    }, {
+      dates: false,
+      locale: false,
+      month: false,
+      year: false,
+    });
+  };
+
+  const handleClick = (e: MouseEvent) => {
+    if (!e.target || !(e.target as HTMLElement).closest('[data-vc-custom-btn="close"]')) return;
+    calendar?.hide();
+    clearInput(
+      calendar as VC,
+      calendarEl.current as HTMLDivElement,
+      'date-end',
+      dateMinStr,
+      setVisibilityStart,
+      setVisibilityEnd,
+      titles,
+    );
   };
 
   useEffect(() => {
     if (!calendarEl.current) return;
     setInputStartEl(calendarEl.current.querySelector('input[name="date-start"]') as HTMLInputElement | null);
     setInputEndEl(calendarEl.current.querySelector('input[name="date-end"]') as HTMLInputElement | null);
+    setCalendar(new VC(calendarEl.current));
   }, [calendarEl]);
 
   useEffect(() => {
-    if (!calendarEl.current || !inputStartEl || !inputEndEl || calendar) return;
+    if (!calendar || calendar.context.isInit) return;
     const dateMax = new Date();
     dateMax.setFullYear(dateMax.getFullYear() + 1);
-
-    setCalendar(new VanillaCalendar(calendarEl.current, {
-      actions: {
-        clickDay,
-      },
-      ...getOptions(locale, getDateString(dateMax), getTemplate(false, false, titles)),
-    }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputStartEl, inputEndEl]);
-
-  useEffect(() => {
-    if (!calendar || calendar.isInit) return;
+    calendar.set({ onClickDate, ...getOptions(locale, getDateString(dateMax), getTemplate(false, false, titles)) });
     calendar.init();
   }, [calendar]);
 
   useEffect(() => {
-    if (!calendarEl.current || !calendar?.HTMLElement) return;
-    calendar.HTMLElement?.addEventListener('click', (e: MouseEvent) => {
-      if (!e.target || !(e.target as HTMLElement).closest('[data-custom-btn-calendar="close"]')) return;
-      calendar.HTMLElement.classList.add(calendar.CSSClasses.calendarHidden);
-      clearInput(
-        calendar as VanillaCalendar,
-        calendarEl.current as HTMLDivElement,
-        'date-end',
-        dateMinStr,
-        setVisibilityStart,
-        setVisibilityEnd,
-        titles,
-      );
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [calendar?.HTMLElement]);
+    if (!calendarEl.current || !calendar?.context.mainElement) return;
+    calendar.context.mainElement?.addEventListener('click', handleClick);
+    return () => calendar.context.mainElement?.removeEventListener('click', handleClick);
+  }, [calendar?.context.mainElement]);
 
   return (
     <div ref={calendarEl} className="pointer-events-none relative grid h-full grid-cols-2 gap-[2px]">
@@ -99,7 +102,7 @@ export default function Calendar({
         placeholder={placeholderStart}
         visibility={visibilityStart}
         handleClear={() => clearInput(
-          calendar as VanillaCalendar,
+          calendar as VC,
           calendarEl.current as HTMLDivElement,
           'date-start',
           dateMinStr,
@@ -113,7 +116,7 @@ export default function Calendar({
         placeholder={placeholderEnd}
         visibility={visibilityEnd}
         handleClear={() => clearInput(
-          calendar as VanillaCalendar,
+          calendar as VC,
           calendarEl.current as HTMLDivElement,
           'date-end',
           dateMinStr,

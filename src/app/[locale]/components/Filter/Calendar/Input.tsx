@@ -10,14 +10,7 @@ export default function Input({ name, placeholder, visibility, handleClear }: { 
   return (
     <label className="pointer-events-auto relative">
       <span
-        className={`will-change-[transform,opacity]
-				${
-          visibility
-            ? 'translate-y-0 opacity-100 transition-[transform_0.3s_cubic-bezier(0,0.6,0,1),opacity_0.3s_linear]'
-            : 'translate-y-3 opacity-0 transition-[transform_0.3s_cubic-bezier(1,0,1,0.4),opacity_0.3s_linear]'
-        }
-			absolute -top-5 left-4 h-5 text-[0.5625rem] font-semibold uppercase text-white`}
-      >
+        className={`will-change-[transform,opacity] ${visibility ? 'translate-y-0 opacity-100 transition-[transform_0.3s_cubic-bezier(0,0.6,0,1),opacity_0.3s_linear]' : 'translate-y-3 opacity-0 transition-[transform_0.3s_cubic-bezier(1,0,1,0.4),opacity_0.3s_linear]'} absolute -top-5 left-4 h-5 text-[0.5625rem] font-semibold uppercase text-white`}>
         {placeholder}
       </span>
       <input readOnly className="h-full w-full cursor-pointer px-4 py-3 text-[0.93rem] font-medium" name={name} placeholder={placeholder} type="text" />

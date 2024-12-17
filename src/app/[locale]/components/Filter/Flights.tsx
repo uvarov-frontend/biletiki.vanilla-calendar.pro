@@ -14,9 +14,7 @@ export default function FilterFlights({ activeCategory, locale }: { activeCatego
 
   return (
     <form
-      className="mt-12 grid h-[3.75rem] grid-cols-[1fr_auto] items-center justify-start gap-[10px]
-			focus:[&_input]:shadow-[0_0_0_2px_#ff521f] focus:[&_input]:outline-none"
-    >
+      className="mt-12 grid h-[3.75rem] grid-cols-[1fr_auto] items-center justify-start gap-[10px] focus:[&_input]:shadow-[0_0_0_2px_#ff521f] focus:[&_input]:outline-none">
       <div className="grid h-full w-full grid-cols-[3fr_3fr_6fr_4fr] items-center justify-start gap-[2px]">
         {activeCategory.inputs.map((input) => (
           <Input key={input.id} placeholder={input.placeholder} />

@@ -4,7 +4,7 @@ export default function Input({ value, activeLevel, handler }: { value: string; 
   return (
     <label
       className="relative flex cursor-pointer justify-between border-b border-[#f0f2f3] py-[0.68rem]
-			last:border-b-0 [&_span:after]:hover:bg-[#f0f2f3]"
+      last:border-b-0 [&_span:after]:hover:bg-[#f0f2f3]"
     >
       <input
         checked={value === activeLevel}
@@ -16,8 +16,8 @@ export default function Input({ value, activeLevel, handler }: { value: string; 
       />
       <span
         className="text-[0.9375rem]
-				after:absolute after:right-0 after:top-1/2 after:h-5 after:w-5 after:-translate-y-1/2
-				after:rounded-full after:border after:border-[#c5c7ca] after:bg-white"
+        after:absolute after:right-0 after:top-1/2 after:h-5 after:w-5 after:-translate-y-1/2
+        after:rounded-full after:border after:border-[#c5c7ca] after:bg-white"
       >
         {value}
       </span>

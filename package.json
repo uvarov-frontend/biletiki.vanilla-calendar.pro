@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3001",
+    "start": "next start",
     "lint-next": "next lint",
     "lint-next-fix": "next lint -- --fix",
     "lint": "eslint . --ext ts --ext tsx",
@@ -27,7 +27,7 @@
     "next-intl": "3.0.0-rc.6",
     "react": "^18",
     "react-dom": "^18",
-    "vanilla-calendar-pro": "^2.9.2"
+    "vanilla-calendar-pro": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -41,7 +41,7 @@ export default function PeopleCounter({ id, title, subtitle, range, quantities, 
           data-btn="decrease"
           type="button"
           className={`flex h-8 w-8 items-center justify-center rounded-full
-					${quantity <= rangeMin ? 'pointer-events-none bg-[#f8f8f9] text-[#9ea9b8]' : 'bg-[#1874fe] text-white'}`}
+          ${quantity <= rangeMin ? 'pointer-events-none bg-[#f8f8f9] text-[#9ea9b8]' : 'bg-[#1874fe] text-white'}`}
           onClick={handleQuantity}
         >
           <svg fill="currentColor" height="18" viewBox="0 0 16 16" width="18">
@@ -55,7 +55,7 @@ export default function PeopleCounter({ id, title, subtitle, range, quantities, 
           data-btn="increase"
           type="button"
           className={`flex h-8 w-8 items-center justify-center rounded-full
-					${quantity >= rangeMax ? 'pointer-events-none bg-[#f8f8f9] text-[#9ea9b8]' : 'bg-[#1874fe] text-white'}`}
+          ${quantity >= rangeMax ? 'pointer-events-none bg-[#f8f8f9] text-[#9ea9b8]' : 'bg-[#1874fe] text-white'}`}
           onClick={handleQuantity}
         >
           <svg fill="currentColor" height="18" viewBox="0 0 16 16" width="18">

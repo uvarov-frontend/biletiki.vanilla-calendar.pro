@@ -1,130 +1,116 @@
-.vanilla-calendar {
+.vc {
   @apply w-[772px] max-w-none rounded-[5px] bg-white px-5 py-6 font-[-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif] text-[#0c131d] shadow-[0_6px_9px_rgba(0,0,0,0.08)];
 }
 
-.vanilla-calendar_hidden * {
-  @apply pointer-events-none;
-}
-
-.vanilla-calendar_to-input {
+.vc[data-vc-input] {
   @apply mt-[2px];
 }
 
-.vanilla-calendar-info {
+.vc-info {
   @apply mb-7 flex items-center justify-between px-1;
 }
 
-.vanilla-calendar-info__title {
+.vc-info__title {
   @apply text-[19px] font-semibold;
 }
 
-.vanilla-calendar-info__btn {
+.vc-info__btn {
   @apply pointer-events-none h-12 rounded-[10px] bg-[#f0f2f3] px-6 text-[17px] font-semibold text-[#0c131d] text-opacity-60 opacity-50 hover:bg-[#e2e6e8];
 }
 
-.vanilla-calendar-info__btn_active {
+.vc-info__btn_active {
   @apply pointer-events-auto text-opacity-100 opacity-100;
 }
 
-.vanilla-calendar-datepicker {
+.vc-datepicker {
   @apply relative;
 }
 
-.vanilla-calendar-datepicker * {
+.vc-datepicker * {
   @apply subpixel-antialiased;
 }
 
-.vanilla-calendar-header {
-  @apply mb-4 h-9;
-}
-
-.vanilla-calendar-controls {
+.vc-controls {
   @apply p-0;
 }
 
-.vanilla-calendar-grid {
+.vc-grid {
   @apply grid-cols-2;
 }
 
-.vanilla-calendar-days {
+.vc-header {
+  @apply mb-4 h-9;
+}
+
+.vc-dates {
   @apply gap-y-[1px];
 }
 
-.vanilla-calendar-week {
-  @apply text-[#9ea9b7];
-}
-
-.vanilla-calendar-week__day_weekend {
-  @apply text-[#ff3c4f] text-opacity-[0.64];
-}
-
-.vanilla-calendar-month,
-.vanilla-calendar-year {
+.vc-month,
+.vc-year {
   @apply text-[17px] font-normal text-[#0c73fe] hover:text-[#0c73fe];
 }
 
-.vanilla-calendar-arrow.vanilla-calendar-arrow_prev,
-.vanilla-calendar-arrow.vanilla-calendar-arrow_next {
+.vc-arrow.vc-arrow_prev,
+.vc-arrow.vc-arrow_next {
   @apply h-9 w-16 rounded-md bg-[#0c73fe];
 }
 
-.vanilla-calendar-arrow.vanilla-calendar-arrow_prev:before,
-.vanilla-calendar-arrow.vanilla-calendar-arrow_next:before {
-  @apply left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 bg-white;
+.vc-arrow.vc-arrow_prev:before,
+.vc-arrow.vc-arrow_next:before {
+  @apply bg-arrow left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2;
 }
 
-.vanilla-calendar-arrow.vanilla-calendar-arrow_prev:before {
+.vc-arrow.vc-arrow_prev:before {
   @apply rotate-90;
 }
 
-.vanilla-calendar-arrow.vanilla-calendar-arrow_next:before {
+.vc-arrow.vc-arrow_next:before {
   @apply -rotate-90;
 }
 
-.vanilla-calendar-day_hover-intermediate .vanilla-calendar-day__btn_hover {
-  @apply bg-[#e8f4ff] text-[#0c131d]
-}
-
-.vanilla-calendar-day_hover-first .vanilla-calendar-day__btn_hover,
-.vanilla-calendar-day_hover-last .vanilla-calendar-day__btn_hover {
-  @apply bg-[#0c73fe] text-white;
-}
-
-.vanilla-calendar-day__btn {
-  @apply h-[50px] rounded-lg text-[15px] text-[#0c131d] hover:bg-[#e8f4ff];
-}
-
-.vanilla-calendar-day__btn_hover {
-  @apply hover:bg-[#0c73fe] hover:text-white;
-}
-
-.vanilla-calendar-day__btn_disabled,
-.vanilla-calendar-day__btn_disabled.vanilla-calendar-day__btn_today {
-  @apply text-[#cdd4de];
-}
-
-.vanilla-calendar-day__btn_today {
-  @apply text-[#0c73fe];
-}
-
-.vanilla-calendar-day__btn_selected {
-  @apply rounded-lg bg-[#0c73fe] text-white hover:bg-[#0656fe] hover:text-white;
-}
-
-.vanilla-calendar-day_selected-intermediate .vanilla-calendar-day__btn_selected {
-  @apply rounded-none bg-[#e8f4ff] text-[#0c131d] hover:rounded-lg hover:bg-[#0656fe] hover:text-white;
-}
-
-.vanilla-calendar-week {
+.vc-week {
   @apply mb-3;
 }
 
-.vanilla-calendar-day_selected-first + .vanilla-calendar-day_selected-intermediate::before {
-  content: '';
-  @apply pointer-events-none absolute -left-2 bottom-0 top-0 -z-10 w-2 bg-[#e8f4ff];
+.vc-week__day {
+  @apply text-[#9ea9b7];
 }
 
-.vanilla-calendar-day_selected-intermediate + .vanilla-calendar-day_selected-last::before {
-  content: '';
-  @apply pointer-events-none absolute bottom-0 left-0 top-0 -z-10 w-2 bg-[#e8f4ff];
+.vc-week__day[data-vc-week-day-off] {
+  @apply text-[#ff3c4f] text-opacity-[0.64];
+}
+
+.vc-date {
+  @apply py-0;
+}
+
+.vc-date .vc-date__btn {
+  @apply h-[50px] rounded-lg text-[15px] text-[#0c131d] hover:bg-[#e8f4ff];
+}
+
+.vc-date[data-vc-date-hover] .vc-date__btn {
+  @apply bg-[#e8f4ff] text-[#0c131d];
+}
+
+.vc-date[data-vc-date-hover-first] .vc-date__btn,
+.vc-date[data-vc-date-hover-last] .vc-date__btn {
+  @apply bg-[#0c73fe] text-white;
+}
+
+.vc-date[data-vc-date-disabled] .vc-date__btn,
+.vc-date[data-vc-date-disabled][data-vc-date-today] .vc-date__btn {
+  @apply text-[#cdd4de];
+}
+
+.vc-date[data-vc-date-today] .vc-date__btn {
+  @apply text-[#0c73fe];
+}
+
+.vc-date[data-vc-date-selected] .vc-date__btn {
+  @apply bg-[#0c73fe] text-white hover:bg-[#0656fe] hover:text-white;
+}
+
+.vc-date[data-vc-date-selected='middle'][data-vc-date-selected] .vc-date__btn {
+  @apply rounded-none bg-[#e8f4ff] text-[#0c131d] hover:rounded-lg hover:bg-[#0656fe] hover:text-white;
 }

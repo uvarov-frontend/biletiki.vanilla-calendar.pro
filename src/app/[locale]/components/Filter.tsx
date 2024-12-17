@@ -2,7 +2,6 @@
 
 import { notFound } from 'next/navigation';
 import { useState } from 'react';
-import VanillaCalendarClasses from 'vanilla-calendar-pro/classes';
 
 import { categories } from '@/bd';
 import { ICategoryFilter, Locale } from '@/types';
@@ -15,7 +14,7 @@ export default function Filter({ locale }: { locale: Locale }) {
   const [activeCategory, setActiveCategory] = useState(categories.locales[locale]?.[0]);
   const isActiveCategory = (value: number) => activeCategory.id === value;
   const handlerCategory = (index: number) => {
-    const calendar = document.querySelector(`.${VanillaCalendarClasses.calendar}`);
+    const calendar = document.querySelector('[data-vc]');
     if (calendar && document.body.contains(calendar)) document.body.removeChild(calendar);
     setActiveCategory(categories.locales[locale]?.[index]);
   };
