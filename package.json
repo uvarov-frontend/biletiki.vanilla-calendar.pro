@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint-next": "next lint",
     "lint-next-fix": "next lint -- --fix",
     "lint": "eslint . --ext ts --ext tsx",
