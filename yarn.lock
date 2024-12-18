@@ -2864,10 +2864,10 @@ util-deprecate@^1.0.2:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-vanilla-calendar-pro@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/vanilla-calendar-pro/-/vanilla-calendar-pro-3.0.2.tgz#8c9647ee6649054d50faa66454eb0e6ff1c14c58"
-  integrity sha512-KzssdIi6kn7UvNS47qlDX9vE0YcxplRVsU0mZeMt1mYCXgk5PWiv+OZaYxRJRVhNB2dJ8NjnIdYWlzrdaO9+Dw==
+vanilla-calendar-pro@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/vanilla-calendar-pro/-/vanilla-calendar-pro-3.0.3.tgz#fc0ea95561f0b320b8442134209902beb3233577"
+  integrity sha512-bfmeGFaDeakk/OrwgM+22qDiRvIx1Zu+GG3+E/sCPjaKwbJR7AsDyRBfJQzVHRw3eeavU8jQQTRSFt8EPIPOGw==
 
 watchpack@2.4.0:
   version "2.4.0"

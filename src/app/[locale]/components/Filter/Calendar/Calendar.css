@@ -93,8 +93,8 @@
   @apply bg-[#e8f4ff] text-[#0c131d];
 }
 
-.vc-date[data-vc-date-hover-first] .vc-date__btn,
-.vc-date[data-vc-date-hover-last] .vc-date__btn {
+.vc-date[data-vc-date-hover='first'] .vc-date__btn,
+.vc-date[data-vc-date-hover='last'] .vc-date__btn {
   @apply bg-[#0c73fe] text-white;
 }
 
