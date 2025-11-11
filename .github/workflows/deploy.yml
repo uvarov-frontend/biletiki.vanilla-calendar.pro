@@ -26,9 +26,5 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
           script: |
-            pm2 stop biletiki
             cd ${{ secrets.TARGET }}
-            rm -rf .next
-            yarn install
-            yarn build
-            pm2 start biletiki
+            docker build --no-cache -t biletiki_vanilla_calendar_pro . && docker rm -f -v biletiki_vanilla_calendar_pro && docker run -d --name biletiki_vanilla_calendar_pro --restart unless-stopped -p 3401:3401 biletiki_vanilla_calendar_pro
