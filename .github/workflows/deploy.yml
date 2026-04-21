@@ -27,4 +27,12 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd ${{ secrets.TARGET }}
-            docker build --no-cache -t biletiki_vanilla_calendar_pro . && docker rm -f -v biletiki_vanilla_calendar_pro && docker run -d --name biletiki_vanilla_calendar_pro --restart unless-stopped -p 3401:3401 biletiki_vanilla_calendar_pro
+            docker build --no-cache -t biletiki_vanilla_calendar_pro . \
+              && docker rm -f -v biletiki_vanilla_calendar_pro 2>/dev/null || true \
+              && docker run -d \
+                --name biletiki_vanilla_calendar_pro \
+                --restart unless-stopped \
+                -e NODE_ENV=production \
+                -e PORT=3401 \
+                -p 127.0.0.1:3401:3401 \
+                biletiki_vanilla_calendar_pro
