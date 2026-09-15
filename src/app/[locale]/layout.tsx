@@ -4,7 +4,6 @@ import { createTranslator, NextIntlClientProvider } from 'next-intl';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Metrika from '@/components/Metrika';
 import { locales } from '@/locales';
 import { getMessages } from '@/navigation';
 import { IParams, IProps } from '@/types';
@@ -33,7 +32,6 @@ export default async function LocaleLayout({ children, params: { locale } }: { c
   return (
     <html lang={locale}>
       <body className={`${montserrat.className} flex h-screen min-h-[500px] w-full min-w-[1240px] flex-col bg-[#1874fe] tracking-tighter text-[#0c131d]`}>
-        <Metrika />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header locale={locale} />
           {children}
